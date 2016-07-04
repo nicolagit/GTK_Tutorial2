@@ -3,16 +3,21 @@
 
 int main(int argc,char* argv[])
 {
-        gtk_init(&argc,&argv);
-        GtkWidget *window,*button;
-        window=gtk_window_new(GTK_WINDOW_TOPLEVEL);
-        button=gtk_button_new_with_label("Exit");
+        gtk_init(&argc,&argv); //initialize the gtk
+        GtkWidget *window,*label,*button,*hbox; //declare the needed variables
+        window=gtk_window_new(GTK_WINDOW_TOPLEVEL); //create the window
+        //if the 'X' was clicked, then exit from the program
         g_signal_connect(window,"delete_event",G_CALLBACK(gtk_main_quit),NULL);
-        g_signal_connect(button,"clicked",G_CALLBACK(gtk_main_quit),NULL);
-        gtk_container_add(GTK_CONTAINER(window),button);
-        gtk_widget_set_size_request(window,300, 300);
-        gtk_window_set_title(GTK_WINDOW(window),"Hello world");
-        gtk_widget_show_all(window);
-        gtk_main();
+        //our program starts from here
+
+        label=gtk_label_new("Hello world");
+        button=gtk_button_new_with_label("Click me!");
+        hbox=gtk_hbox_new(0,0);
+        gtk_box_pack_start(GTK_BOX(hbox),label,0,0,0);
+        gtk_box_pack_start(GTK_BOX(hbox),button,0,0,0);
+        gtk_container_add(GTK_CONTAINER(window),hbox);
+
+        gtk_widget_show_all(window); //we show all widgets
+        gtk_main(); //start the main loop
         return 0;
 }
