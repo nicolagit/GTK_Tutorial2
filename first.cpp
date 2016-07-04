@@ -13,8 +13,8 @@ int main(int argc,char* argv[])
         label=gtk_label_new("Hello world");
         button=gtk_button_new_with_label("Click me!");
         hbox=gtk_hbox_new(0,0);
-        gtk_box_pack_start(GTK_BOX(hbox),label,0,0,0);
-        gtk_box_pack_start(GTK_BOX(hbox),button,0,0,0);
+        gtk_box_pack_start(GTK_BOX(hbox),label,1,1,0);
+        gtk_box_pack_start(GTK_BOX(hbox),button,1,1,0);
         gtk_container_add(GTK_CONTAINER(window),hbox);
 
         gtk_widget_show_all(window); //we show all widgets
