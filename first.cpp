@@ -1,5 +1,9 @@
 #include <gtk/gtk.h>
 
+static void button_clicked(GtkWidget* widget, gpointer data)
+{
+        gtk_label_set_text(GTK_LABEL(data),"you clicked the button");
+}
 
 int main(int argc,char* argv[])
 {
@@ -12,6 +16,7 @@ int main(int argc,char* argv[])
 
         label=gtk_label_new("Hello world");
         button=gtk_button_new_with_label("Click me!");
+        g_signal_connect(button,"clicked",G_CALLBACK(button_clicked),(gpointer)label);
         hbox=gtk_vbox_new(0,0);
         gtk_box_pack_start(GTK_BOX(hbox),label,1,1,0);
         gtk_box_pack_start(GTK_BOX(hbox),button,1,1,0);
